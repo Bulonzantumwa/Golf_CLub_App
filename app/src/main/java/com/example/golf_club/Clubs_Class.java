@@ -1,14 +1,14 @@
 package com.example.golf_club;
 
 public class Clubs_Class {
-    private int img;
-    private String name;
-    private String email;
+    private final int img;
+    private final String name;
+    private final String description;
 
-    public Clubs_Class(int img, String name, String email) {
+    public Clubs_Class(int img, String name, String description) {
         this.img = img;
         this.name = name;
-        this.email = email;
+        this.description = description;
     }
 
     public int getImg() {
@@ -19,8 +19,8 @@ public class Clubs_Class {
         return name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
 }

@@ -17,7 +17,8 @@
             android:layout_height="100dp"
             android:src="@drawable/ic_img_01"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/id_name_CardView"
@@ -25,18 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Name"
-            app:layout_constraintBottom_toTopOf="@+id/id_email_CardView"
+            app:layout_constraintBottom_toTopOf="@+id/id_description_CardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/id_img_CardView"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="10dp" />
 
         <TextView
-            android:id="@+id/id_email_CardView"
+            android:id="@+id/id_description_CardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Email"
+            android:text="Description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/id_img_CardView"

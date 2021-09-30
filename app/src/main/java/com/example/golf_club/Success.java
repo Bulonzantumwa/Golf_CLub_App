@@ -5,12 +5,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class Success extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private ArrayList<Clubs_Class> list;
 
 
@@ -22,18 +19,18 @@ public class Success extends AppCompatActivity {
 
         //--> Creating a list
         list = new ArrayList<>();
-        list.add(new Clubs_Class (R.drawable.ic_img_01, "Kenya", "Mario@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_02, "China", "John@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_03, "Canada", "Ian@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_04, "France", "Mario@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_05, "South Africa", "John@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_06, "India", "Ian@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_07, "United Kingdom", "Mario@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_08, "Egypt", "John@email.com"));
-        list.add(new Clubs_Class (R.drawable.ic_img_09, "Uganda", "Ian@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_01, "Kenya", "Welcome to our team"));
+        list.add(new Clubs_Class (R.drawable.ic_img_02, "China", "Join Us now for more Infos"));
+        list.add(new Clubs_Class (R.drawable.ic_img_03, "Canada", "Let's start this journey together"));
+        list.add(new Clubs_Class (R.drawable.ic_img_04, "France", "Click and join to not miss your chance"));
+        list.add(new Clubs_Class (R.drawable.ic_img_05, "South Africa", "It all starts with on click"));
+        list.add(new Clubs_Class (R.drawable.ic_img_06, "India", "Join on time and let's do it"));
+        list.add(new Clubs_Class (R.drawable.ic_img_07, "United Kingdom", "Join one, join all. Welcome!"));
+        list.add(new Clubs_Class (R.drawable.ic_img_08, "Egypt", "You are at the right place. Join Now!"));
+        list.add(new Clubs_Class (R.drawable.ic_img_09, "Uganda", "Impossible does not exist. Just Try it... "));
 
 
-        recyclerView = findViewById(R.id.id_RecyclerView);
+        RecyclerView recyclerView = findViewById (R.id.id_RecyclerView);
         recyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -43,16 +40,13 @@ public class Success extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        adapter.OnRecyclerViewClickListener(new MyAdapter.OnRecyclerViewClickListener() {
-            @Override
-            public void OnItemClick(int position) {
+        adapter.OnRecyclerViewClickListener(position -> {
 
-                Intent intent = new Intent(Success.this, DetailsActivity.class);
-                intent.putExtra("imagINTENT", list.get(position).getImg() );
-                intent.putExtra("nameINTENT", list.get(position).getName());
-                intent.putExtra("emailINTENT", list.get(position).getEmail());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Success.this, DetailsActivity.class);
+            intent.putExtra("imagINTENT", list.get(position).getImg() );
+            intent.putExtra("nameINTENT", list.get(position).getName());
+            intent.putExtra("descriptionINTENT", list.get(position).getDescription());
+            startActivity(intent);
         });
 
     }

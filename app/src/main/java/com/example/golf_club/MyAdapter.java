@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import static java.util.Objects.*;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private final ArrayList <Clubs_Class> myList;
@@ -42,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Clubs_Class item = myList.get(position);
         holder.imageView_img.setImageResource(item.getImg());
         holder.textView_name.setText(item.getName());
-        holder.textView_email.setText(item.getEmail());
+        holder.textView_description.setText(item.getDescription());
     }
 
     @Override
@@ -55,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public ImageView imageView_img;
         public TextView textView_name;
-        public TextView textView_email;
+        public TextView textView_description;
 
         //--> Constructor
         public MyViewHolder(@NonNull View itemView, OnRecyclerViewClickListener listener) {
@@ -63,14 +64,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             imageView_img = itemView.findViewById(R.id.id_img_CardView);
             textView_name = itemView.findViewById(R.id.id_name_CardView);
-            textView_email = itemView.findViewById(R.id.id_email_CardView);
+            textView_description = itemView.findViewById(R.id.id_description_CardView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(listener!=null && getAbsoluteAdapterPosition()!=RecyclerView.NO_POSITION){
-                        listener.OnItemClick(getAbsoluteAdapterPosition());
-                    }
+            requireNonNull (itemView).setOnClickListener(v -> {
+                if(listener!=null && getAbsoluteAdapterPosition()!=RecyclerView.NO_POSITION){
+                    listener.OnItemClick(getAbsoluteAdapterPosition());
                 }
             });
         }

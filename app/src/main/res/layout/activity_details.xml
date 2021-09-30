@@ -28,10 +28,10 @@
         app:layout_constraintTop_toBottomOf="@+id/id_img_details" />
 
     <TextView
-        android:id="@+id/id_email_details"
+        android:id="@+id/id_description_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
+        android:text="set description here"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
