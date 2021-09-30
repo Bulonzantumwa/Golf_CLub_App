@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_main);
+        setContentView (R.layout.login);
         email = password = "";
         etEmail = findViewById (R.id.etEmail);
         etPassword = findViewById (R.id.etPassword);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
                 Log.d("res", response);
                 if (response.equals("success")) {
-                    Intent intent = new Intent(MainActivity.this, Success.class);
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else if (response.equals("failure")) {

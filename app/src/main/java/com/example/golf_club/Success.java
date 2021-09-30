@@ -1,49 +1,59 @@
 package com.example.golf_club;
-
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
 public class Success extends AppCompatActivity {
-
-    // Declare a RecyclerView object reference
-    RecyclerView recyclerView;
-
-    // Declare an adapter
-    RecyclerView.Adapter programAdapter;
-    RecyclerView.LayoutManager layoutmanager;
-
-    // Next, prepare your data set. Create two string arrays for program name and program description respectively.
-    String[] programNameList = {"Kenya", "Egypt", "China", "Canada", "France", "South Africa"};
-    String[] programDescriptionList = {"Our golf Team has been the best over the past 2 years.", "We are recruiting Golf players for our national Team.",
-            "Strive to excel. Do you think you got the skills? Join one of our main golf clubs",
-            "Our National Team is currently full.", "Nous sommes en plein recruitement de joueurs agés de 18 à 24 ans.",
-            "Interested in participating to the world championship? Join one of our teams"};
-
-    // Define an integer array to hold the image recourse ids
-    int[] programImages = {R.drawable.ic_golf, R.drawable.ic_golf,
-            R.drawable.ic_golf, R.drawable.ic_golf, R.drawable.ic_golf,
-            R.drawable.ic_golf};
+    private RecyclerView recyclerView;
+    private ArrayList<Clubs_Class> list;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.success);
-        // Obtain a handle for the RecyclerView
-        recyclerView = findViewById(R.id.rvProgram);
-        // You may use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        setContentView(R.layout.activity_main);
+
+
+        //--> Creating a list
+        list = new ArrayList<>();
+        list.add(new Clubs_Class (R.drawable.ic_img_01, "Kenya", "Mario@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_02, "China", "John@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_03, "Canada", "Ian@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_04, "France", "Mario@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_05, "South Africa", "John@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_06, "India", "Ian@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_07, "United Kingdom", "Mario@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_08, "Egypt", "John@email.com"));
+        list.add(new Clubs_Class (R.drawable.ic_img_09, "Uganda", "Ian@email.com"));
+
+
+        recyclerView = findViewById(R.id.id_RecyclerView);
         recyclerView.setHasFixedSize(true);
-        // Use a linear layout manager
-        layoutmanager = new LinearLayoutManager (this);
-        recyclerView.setLayoutManager(layoutmanager);
-        // Create an instance of ProgramAdapter. Pass context and all the array elements to the constructor
-        programAdapter = new ProgramAdapter(this, programNameList, programDescriptionList, programImages);
-        // Finally, attach the adapter with the RecyclerView
-        recyclerView.setAdapter(programAdapter);
-      }
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        MyAdapter adapter = new MyAdapter(list);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
+        adapter.OnRecyclerViewClickListener(new MyAdapter.OnRecyclerViewClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+
+                Intent intent = new Intent(Success.this, DetailsActivity.class);
+                intent.putExtra("imagINTENT", list.get(position).getImg() );
+                intent.putExtra("nameINTENT", list.get(position).getName());
+                intent.putExtra("emailINTENT", list.get(position).getEmail());
+                startActivity(intent);
+            }
+        });
+
     }
+}

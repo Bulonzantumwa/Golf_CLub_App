@@ -69,7 +69,17 @@ public class Register extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Success.class);
+        startActivity(intent);
+        finish();
+    }
+    public void register(View view) {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+        finish();
+    }
+    public void main(View view) {
+        Intent intent = new Intent(this, Success.class);
         startActivity(intent);
         finish();
     }

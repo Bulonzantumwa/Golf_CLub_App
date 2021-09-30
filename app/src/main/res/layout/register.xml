@@ -7,6 +7,16 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_marginBottom="30dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textColor="@color/teal_200"/>
+
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
@@ -69,4 +79,12 @@
         android:text="Already Registered?\nLogin here."
         android:textAlignment="center"
         android:onClick="login"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Skip and go to main page"
+        android:textAlignment="center"
+        android:onClick="main"/>
 </LinearLayout>
